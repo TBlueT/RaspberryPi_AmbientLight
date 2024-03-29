@@ -3,7 +3,7 @@ class ConsoleServer:
 
         self.__output:bool = True
 
-    @@property
+    @property
     def output(self):
         return self.__output
 
