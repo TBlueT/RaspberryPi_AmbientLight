@@ -17,10 +17,13 @@ class LandAreaServer:
 
     def partition_color(self, range_area:int, img):
         w, h, _ = np.shape(img)
-        color = [0 for _ in range(range_area)]
-        for i in range(range_area):
-
-
+        color = [[0, 0, 0] for _ in range(range_area)]
+        for i in range(1,range_area+1):
+            r = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 0])/range_area
+            g = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 1])/range_area
+            b = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 2])/range_area
+            color[i] = [r, g, b]
+        return color
 
 if __name__ == "__main__":
     pass
