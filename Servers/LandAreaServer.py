@@ -12,7 +12,6 @@ class LandAreaServer:
         img_3 = cv2.rotate(img[0:w, h - range_width:h], cv2.ROTATE_90_COUNTERCLOCKWISE)
         img_4 = img[0:range_width, 0:h]
 
-
         return [img_1, img_2, img_3, img_4]
 
     def partition_color(self, range_area:int, img):

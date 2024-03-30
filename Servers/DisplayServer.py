@@ -19,8 +19,19 @@ class DiasplayServer(threading.Thread):
         except:
             pass
 
-    def stock_img(self, value:list):
-        self.main.DisplayM.img = value
+    def stock_img(self):
+        if self.HC100.isOpened():
+            ret, img = self.HC100.read()
+            if ret:
+                return img
+                # cv2.imshow("HC100", img)
+                # if cv2.waitKey(1) != -1:
+                #     break
+            else:
+                self.printf("!!", "HC100 No Get Img")
+        else:
+            self.printf("!!", "Not Open HC100")
+        return (0,)
 
     def stock_fps(self, value:int):
         self.main.DisplayM.FPS = value
@@ -31,17 +42,7 @@ class DiasplayServer(threading.Thread):
 
             current_time = start_t - self.prev_time
             if current_time > 1. / self.FPS_set:
-                if self.HC100.isOpened():
-                    ret, img = self.HC100.read()
-                    if ret:
-                        self.stock_img(img)
-                        # cv2.imshow("HC100", img)
-                        # if cv2.waitKey(1) != -1:
-                        #     break
-                    else:
-                        self.printf("!!", "HC100 No Get Img")
-                else:
-                    self.printf("!!", "Not Open HC100")
+                self.stock_img()
                 fps = int(1. / (self.prev_time - start_t))
                 self.stock_fps(fps)
 
