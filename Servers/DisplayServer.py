@@ -28,9 +28,9 @@ class DiasplayServer(threading.Thread):
                 # if cv2.waitKey(1) != -1:
                 #     break
             else:
-                self.printf("!!", "HC100 No Get Img")
+                self.printf("!!", "CaptureBoard No Get Img")
         else:
-            self.printf("!!", "Not Open HC100")
+            self.printf("!!", "Not Open CaptureBoard")
         return (0,)
 
     def stock_fps(self, value:int):

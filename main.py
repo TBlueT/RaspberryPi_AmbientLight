@@ -14,6 +14,9 @@ class main:
         self.prev_time = 0
         self.FPS_set = 30
 
+        self.average_height = 10
+        self.led_count = 1
+
         self.thrdStart()
     def thrdStart(self):
         self.DisplayS.start()
@@ -27,12 +30,12 @@ class main:
                 temp_img = self.DisplayS.stock_img()
                 if temp_img != (0,):
                     self.DisplayM.img = temp_img
-                    temp_detachment = self.LandAreaS.detachment(10, temp_img)
-                    temp_partition_color_left = self.LandAreaS.partition_color(10, temp_detachment[0])
-                    temp_partition_color_top = self.LandAreaS.partition_color(10, temp_detachment[1])
-                    temp_partition_color_right = self.LandAreaS.partition_color(10, temp_detachment[2])
-                    temp_partition_color_bown = self.LandAreaS.partition_color(10, temp_detachment[3])
-
+                    temp_detachment = self.LandAreaS.detachment(self.average_height, temp_img)
+                    temp_partition_color_left = self.LandAreaS.partition_color(self.led_count, temp_detachment[0])
+                    temp_partition_color_top = self.LandAreaS.partition_color(self.led_count, temp_detachment[1])
+                    temp_partition_color_right = self.LandAreaS.partition_color(self.led_count, temp_detachment[2])
+                    temp_partition_color_bown = self.LandAreaS.partition_color(self.led_count, temp_detachment[3])
+                    print([temp_partition_color_left, temp_partition_color_top, temp_partition_color_right, temp_partition_color_bown])
 
 
                 fps = int(1. / (self.prev_time - start_t))

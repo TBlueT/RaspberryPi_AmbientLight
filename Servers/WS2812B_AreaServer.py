@@ -21,5 +21,8 @@ class WS2812B_AreaServer:
         self.pixels = neopixel.NeoPixel(board.D18, 30)
     def write(self):
         self.pixels[0] = (255, 0, 0)
+        self.pixels.show()
+
+
 if __name__ == "__main__":
     pass
