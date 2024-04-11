@@ -18,9 +18,9 @@ class LandAreaServer:
         w, h, _ = np.shape(img)
         color = [[0, 0, 0] for _ in range(range_area)]
         for i in range(1,range_area+1):
-            r = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 0])/range_area
-            g = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 1])/range_area
-            b = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 2])/range_area
+            r = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 0])/np.size(img[w / range_area * (i - 1):w / range_area * i, :, 0])
+            g = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 1])/np.size(img[w / range_area * (i - 1):w / range_area * i, :, 1])
+            b = np.sum(img[w / range_area * (i - 1):w / range_area * i, :, 2])/np.size(img[w / range_area * (i - 1):w / range_area * i, :, 2])
             color[i] = [r, g, b]
         return color
 
