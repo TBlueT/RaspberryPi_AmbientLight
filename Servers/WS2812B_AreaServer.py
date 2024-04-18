@@ -16,13 +16,14 @@ X : RGB data 쓰기 함수 작성
 '''
 
 class WS2812B_AreaServer:
-    def __init__(self):
+    def __init__(self, many):
         self.runStop: bool = False
-        self.pixels = neopixel.NeoPixel(board.D18, 30)
-    def write(self):
-        self.pixels[0] = (255, 0, 0)
+        self.many: int = many
+        self.pixels = neopixel.NeoPixel(board.D18, self.many)
+    def write(self, color):
+        for i in range(self.many):
+            self.pixels[i] = color[i] if len(color) == self.many else color[0]
         self.pixels.show()
-
 
 if __name__ == "__main__":
     pass
