@@ -17,7 +17,7 @@ class main:
         self.average_height = 100
         self.led_count = 20
 
-        self.WS_T = WS2812B_AreaServer(self.led_count)
+        self.WS_T = WS2812B_AreaServer(board.D18, self.led_count)
 
         #self.thrdStart()
     def thrdStart(self):
