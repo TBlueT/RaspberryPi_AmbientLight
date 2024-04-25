@@ -17,6 +17,13 @@ class main:
         self.average_height = 100
         self.led_count = 20
 
+        self.led_count_list = [
+            20,
+            10,
+            20,
+            10
+        ]
+
         self.WS_T = WS2812B_AreaServer(board.D18, self.led_count)
 
         #self.thrdStart()
@@ -34,10 +41,10 @@ class main:
                   if temp_img.shape != (0,):
                       self.DisplayM.img = temp_img
                       temp_detachment = self.LandAreaS.detachment(self.average_height, temp_img)
-                      temp_partition_color_left = self.LandAreaS.partition_color(self.led_count, temp_detachment[0])
-                      temp_partition_color_top = self.LandAreaS.partition_color(self.led_count, temp_detachment[1])
-                      temp_partition_color_right = self.LandAreaS.partition_color(self.led_count, temp_detachment[2])
-                      temp_partition_color_bown = self.LandAreaS.partition_color(self.led_count, temp_detachment[3])
+                      temp_partition_color_left = self.LandAreaS.partition_color(self.led_count_list[0], temp_detachment[0])
+                      temp_partition_color_top = self.LandAreaS.partition_color(self.led_count_list[1], temp_detachment[1])
+                      temp_partition_color_right = self.LandAreaS.partition_color(self.led_count_list[2], temp_detachment[2])
+                      temp_partition_color_bown = self.LandAreaS.partition_color(self.led_count_list[3], temp_detachment[3])
 
                       self.WS_T.write(temp_partition_color_left)
 
